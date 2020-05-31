@@ -34,16 +34,16 @@ public class order {
 		Map < String, Long > topItems = new HashMap < String, Long > (); // key-value pair of frequently ordered items & its frequency
 
 		// logic to fetch frequent items and frequency
-		for (int c = 0 ; c < topcount ; c++) { 
-		
-		Long maxCount = itemsCount.values().stream().filter(i -> !maxVals.contains(i)).max((s1,s2) -> s1.compareTo(s2)).get();
-		
+		itemsCount.values().stream().filter(k -> (k<=topcount)).forEach( l -> {
+
+		Long maxCount = itemsCount.values().stream().filter(i -> !maxVals.contains(i)).max(Long::compare).get();
+			
 		Map<String, Long> topItem = itemsCount.entrySet().stream().filter(j -> (j.getValue()==maxCount))
-				.collect(Collectors.toMap(map -> map.getKey(),map -> map.getValue()))	;
+					.collect(Collectors.toMap(map -> map.getKey(),map -> map.getValue()))	;
 		maxVals.add(maxCount);
 		//System.out.println(topItem);
 		topItems.putAll(topItem);
-		}
+		});
 	     //Printing corresponding Orders of the frequent items
 		topItems.entrySet().stream().sorted(Map.Entry.comparingByValue()).sorted(Map.Entry.comparingByKey()).forEach( i -> {
 			System.out.print( i.getKey()+" -> usuage count : " + i.getValue()  +"; corresponding Orders: ");
