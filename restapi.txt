@@ -1,0 +1,9 @@
+
+
+Rest API to add the rating : path = "/api/rest/customer/2/rate?params"
+
+eg:  /api/rest/customer/2/rate?customerfirstname=x&customersecondname=y&customerRating=3&movie=Movie+3
+
+Rest API to return Highest Rated movie(on Average) : path = "api/rest/HighestRatedMovie"
+
+Rest API to return customer who rated movies highest with average rating and overall average customer rating : path = "api/rest/HighestedRatedCustomer"
